@@ -1,0 +1,195 @@
+{
+    "experiment_name": "exp_01",
+    "dataset": "bank-tr.csv",
+    "experiment_parameters": {
+        "n_splits": 5,
+        "scoring": "accuracy",
+        "target": "made_deposit",
+        "categorical_columns": [
+            "town",
+            "country",
+            "job",
+            "married",
+            "education",
+            "defaulted?",
+            "housing",
+            "has_loan",
+            "last_contact",
+            "cc_tr",
+            "last_contact_month",
+            "poutcome"
+        ],
+        "feature_selection": {
+            "accountID": false,
+            "town": true,
+            "country": true,
+            "age": true,
+            "job": true,
+            "married": true,
+            "education": true,
+            "defaulted?": true,
+            "current_balance": true,
+            "housing": true,
+            "has_loan": true,
+            "last_contact": true,
+            "cc_tr": true,
+            "last_contact_day": true,
+            "last_contact_month": true,
+            "last_contact_duration_s": true,
+            "campaign": true,
+            "days_since_last_contact": true,
+            "previous": true,
+            "poutcome": true,
+            "made_deposit": true
+        }
+    },
+    "selected_classifiers": {
+        "DT": {
+            "include": true,
+            "default": "DT",
+            "params": {
+                "ccp_alpha": [
+                    0.1,
+                    0.01,
+                    0.001
+                ],
+                "criterion": [
+                    "gini",
+                    "entropy"
+                ],
+                "max_depth": [
+                    5,
+                    6,
+                    7,
+                    8,
+                    9
+                ],
+                "max_features": [
+                    "sqrt",
+                    "log2"
+                ]
+            },
+            "best_results": {
+                "best_params": {
+                    "ccp_alpha": 0.001,
+                    "criterion": "entropy",
+                    "max_depth": 9,
+                    "max_features": "sqrt"
+                },
+                "best_score": 0.6847981821735731,
+                "cross_val_scores": {
+                    "mean_cross_val_accuracy": 0.6847981821735731,
+                    "mean_cross_val_precision": 0.723145209003637,
+                    "mean_cross_val_recall": 0.5693053311793215,
+                    "mean_cross_val_f1": 0.6348494621969518,
+                    "mean_cross_val_auc": 0.7540972039690875
+                },
+                "cross_val_confusion_matrix": {
+                    "TN": 2620,
+                    "FP": 684,
+                    "FN": 1333,
+                    "TP": 1762
+                }
+            }
+        },
+        "MLP": {
+            "include": false,
+            "default": "MLP",
+            "params": {
+                "hidden_layer_sizes": [
+                    [
+                        10
+                    ],
+                    [
+                        20
+                    ]
+                ],
+                "activation": [
+                    "tanh",
+                    "relu"
+                ],
+                "solver": [
+                    "sgd",
+                    "adam"
+                ],
+                "alpha": [
+                    0.0001,
+                    0.05
+                ],
+                "learning_rate": [
+                    "constant",
+                    "adaptive"
+                ],
+                "max_iter": [
+                    10000
+                ]
+            },
+            "best_results": {
+                "best_params": {
+                    "activation": "tanh",
+                    "alpha": 0.05,
+                    "hidden_layer_sizes": [
+                        10
+                    ],
+                    "learning_rate": "constant",
+                    "max_iter": 10000,
+                    "solver": "adam"
+                },
+                "best_score": 0.837320294175137,
+                "cross_val_scores": {
+                    "mean_cross_val_accuracy": 0.837320294175137,
+                    "mean_cross_val_precision": 0.829936920228185,
+                    "mean_cross_val_recall": 0.8345718901453958,
+                    "mean_cross_val_f1": 0.8322252222533978,
+                    "mean_cross_val_auc": 0.9093347655393951
+                },
+                "cross_val_confusion_matrix": {
+                    "TN": 2775,
+                    "FP": 529,
+                    "FN": 512,
+                    "TP": 2583
+                }
+            }
+        },
+        "LR": {
+            "include": true,
+            "default": "LR",
+            "params": {
+                "penalty": [
+                    "l1",
+                    "l2"
+                ],
+                "C": [
+                    1.0,
+                    0.1,
+                    10
+                ],
+                "solver": [
+                    "liblinear",
+                    "saga"
+                ]
+            },
+            "best_results": {
+                "best_params": {
+                    "C": 1.0,
+                    "penalty": "l1",
+                    "solver": "saga"
+                },
+                "best_score": 0.8205982456997655,
+                "cross_val_scores": {
+                    "mean_cross_val_accuracy": 0.8205982456997655,
+                    "mean_cross_val_precision": 0.8272336743754035,
+                    "mean_cross_val_recall": 0.7951534733441032,
+                    "mean_cross_val_f1": 0.8108194003374475,
+                    "mean_cross_val_auc": 0.8980588675351591
+                },
+                "cross_val_confusion_matrix": {
+                    "TN": 2790,
+                    "FP": 514,
+                    "FN": 634,
+                    "TP": 2461
+                }
+            }
+        }
+    }
+}

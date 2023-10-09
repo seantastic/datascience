@@ -1,0 +1,90 @@
+{
+    "experiment_name": "exp_05",
+    "dataset": "bank-tr.csv",
+    "experiment_parameters": {
+        "n_splits": 5,
+        "scoring": "accuracy",
+        "target": "made_deposit",
+        "categorical_columns": [
+            "last_contact_month",
+            "poutcome"
+        ],
+        "feature_selection": {
+            "accountID": false,
+            "town": false,
+            "country": false,
+            "age": false,
+            "job": false,
+            "married": false,
+            "education": false,
+            "defaulted?": false,
+            "current_balance": false,
+            "housing": false,
+            "has_loan": false,
+            "last_contact": false,
+            "cc_tr": false,
+            "last_contact_day": true,
+            "last_contact_month": true,
+            "last_contact_duration_s": true,
+            "campaign": true,
+            "days_since_last_contact": true,
+            "previous": true,
+            "poutcome": true,
+            "made_deposit": true
+        }
+    },
+    "selected_classifiers": {
+        "MLP": {
+            "include": true,
+            "default": "MLP",
+            "params": {
+                "hidden_layer_sizes": [
+                    [
+                        10
+                    ]
+                ],
+                "activation": [
+                    "tanh"
+                ],
+                "solver": [
+                    "adam"
+                ],
+                "alpha": [
+                    0.05
+                ],
+                "learning_rate": [
+                    "constant"
+                ],
+                "max_iter": [
+                    10000
+                ]
+            },
+            "best_results": {
+                "best_params": {
+                    "activation": "tanh",
+                    "alpha": 0.05,
+                    "hidden_layer_sizes": [
+                        10
+                    ],
+                    "learning_rate": "constant",
+                    "max_iter": 10000,
+                    "solver": "adam"
+                },
+                "best_score": 0.8256003225175919,
+                "cross_val_scores": {
+                    "mean_cross_val_accuracy": 0.8256003225175919,
+                    "mean_cross_val_precision": 0.8225566803154758,
+                    "mean_cross_val_recall": 0.8151857835218094,
+                    "mean_cross_val_f1": 0.8188194648999098,
+                    "mean_cross_val_auc": 0.901887790232248
+                },
+                "cross_val_confusion_matrix": {
+                    "TN": 2760,
+                    "FP": 544,
+                    "FN": 572,
+                    "TP": 2523
+                }
+            }
+        }
+    }
+}

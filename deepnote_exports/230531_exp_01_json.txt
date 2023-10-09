@@ -1,0 +1,197 @@
+{
+    "experiment_name": "exp_01",
+    "dataset": "bank-tr.csv",
+    "experiment_parameters": {
+        "n_splits": 5,
+        "scoring": "accuracy",
+        "target": "made_deposit",
+        "categorical_columns": [
+            "accountID",
+            "town",
+            "country",
+            "job",
+            "married",
+            "education",
+            "defaulted?",
+            "housing",
+            "has_loan",
+            "last_contact",
+            "cc_tr",
+            "last_contact_month",
+            "poutcome",
+            "made_deposit"
+        ],
+        "feature_selection": {
+            "accountID": false,
+            "town": true,
+            "country": true,
+            "age": true,
+            "job": true,
+            "married": true,
+            "education": true,
+            "defaulted?": true,
+            "current_balance": true,
+            "housing": true,
+            "has_loan": true,
+            "last_contact": true,
+            "cc_tr": true,
+            "last_contact_day": true,
+            "last_contact_month": true,
+            "last_contact_duration_s": true,
+            "campaign": true,
+            "days_since_last_contact": true,
+            "previous": true,
+            "poutcome": true,
+            "made_deposit": true
+        }
+    },
+    "selected_classifiers": {
+        "DT": {
+            "include": true,
+            "default": "DT",
+            "params": {
+                "ccp_alpha": [
+                    0.1,
+                    0.01,
+                    0.001
+                ],
+                "criterion": [
+                    "gini",
+                    "entropy"
+                ],
+                "max_depth": [
+                    5,
+                    6,
+                    7,
+                    8,
+                    9
+                ],
+                "max_features": [
+                    "sqrt",
+                    "log2"
+                ]
+            },
+            "best_results": {
+                "best_params": {
+                    "ccp_alpha": 0.001,
+                    "criterion": "gini",
+                    "max_depth": 9,
+                    "max_features": "sqrt"
+                },
+                "best_score": 0.7612162822517592,
+                "cross_val_scores": {
+                    "mean_cross_val_accuracy": 0.7612162822517592,
+                    "mean_cross_val_precision": 0.7800055874351874,
+                    "mean_cross_val_recall": 0.7059773828756059,
+                    "mean_cross_val_f1": 0.7401797213788575,
+                    "mean_cross_val_auc": 0.8157986018919665
+                },
+                "cross_val_confusion_matrix": {
+                    "TN": 2686,
+                    "FP": 618,
+                    "FN": 910,
+                    "TP": 2185
+                }
+            }
+        },
+        "MLP": {
+            "include": false,
+            "default": "MLP",
+            "params": {
+                "hidden_layer_sizes": [
+                    [
+                        10
+                    ],
+                    [
+                        20
+                    ]
+                ],
+                "activation": [
+                    "tanh",
+                    "relu"
+                ],
+                "solver": [
+                    "sgd",
+                    "adam"
+                ],
+                "alpha": [
+                    0.0001,
+                    0.05
+                ],
+                "learning_rate": [
+                    "constant",
+                    "adaptive"
+                ],
+                "max_iter": [
+                    10000
+                ]
+            },
+            "best_results": {
+                "best_params": {
+                    "activation": "tanh",
+                    "alpha": 0.05,
+                    "hidden_layer_sizes": [
+                        10
+                    ],
+                    "learning_rate": "constant",
+                    "max_iter": 10000,
+                    "solver": "adam"
+                },
+                "best_score": 0.837320294175137,
+                "cross_val_scores": {
+                    "mean_cross_val_accuracy": 0.837320294175137,
+                    "mean_cross_val_precision": 0.829936920228185,
+                    "mean_cross_val_recall": 0.8345718901453958,
+                    "mean_cross_val_f1": 0.8322252222533978,
+                    "mean_cross_val_auc": 0.9093347655393951
+                },
+                "cross_val_confusion_matrix": {
+                    "TN": 2775,
+                    "FP": 529,
+                    "FN": 512,
+                    "TP": 2583
+                }
+            }
+        },
+        "LR": {
+            "include": true,
+            "default": "LR",
+            "params": {
+                "penalty": [
+                    "l1",
+                    "l2"
+                ],
+                "C": [
+                    1.0,
+                    0.1,
+                    10
+                ],
+                "solver": [
+                    "liblinear",
+                    "saga"
+                ]
+            },
+            "best_results": {
+                "best_params": {
+                    "C": 10,
+                    "penalty": "l1",
+                    "solver": "liblinear"
+                },
+                "best_score": 0.8271616008600468,
+                "cross_val_scores": {
+                    "mean_cross_val_accuracy": 0.8271616008600468,
+                    "mean_cross_val_precision": 0.831832449324715,
+                    "mean_cross_val_recall": 0.8054927302100161,
+                    "mean_cross_val_f1": 0.8183401901196252,
+                    "mean_cross_val_auc": 0.9008516123279332
+                },
+                "cross_val_confusion_matrix": {
+                    "TN": 2800,
+                    "FP": 504,
+                    "FN": 602,
+                    "TP": 2493
+                }
+            }
+        }
+    }
+}

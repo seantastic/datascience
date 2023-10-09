@@ -1,0 +1,133 @@
+{
+    "experiment_name": "kakao_exp_01",
+    "dataset": "kakao_A.csv",
+    "problem_type": "timeseries",
+    "experiment_parameters": {
+        "n_splits": 5,
+        "scoring": "accuracy",
+        "target": "sales",
+        "categorical_columns": [
+             
+        ],
+        "date_columns": [
+            "date"
+        ],
+        "feature_selection": {
+            "date": true,
+            "feat_a": true,
+            "feat_b": true,
+            "feat_c": true,
+            "feat_d": true,
+            "feat_e": true,
+            "feat_f": true,
+            "sales": true
+        }
+    },
+    "selected_classifiers": {
+        "DT": {
+            "include": true,
+            "default": "DT",
+            "params": {
+                "ccp_alpha": [
+                    0.1,
+                    0.01,
+                    0.001
+                ],
+                "criterion": [
+                    "gini",
+                    "entropy"
+                ],
+                "max_depth": [
+                    5,
+                    6,
+                    7,
+                    8,
+                    9
+                ],
+                "max_features": [
+                    "sqrt",
+                    "log2"
+                ]
+            },
+            "best_params": {
+                "ccp_alpha": 0.001,
+                "criterion": "entropy",
+                "max_depth": 9,
+                "max_features": "sqrt"
+            },
+            "best_score": 0.6847981821735731,
+            "cross_val_scores": {
+                "mean_cross_val_accuracy": 0.6847981821735731,
+                "mean_cross_val_precision": 0.723145209003637,
+                "mean_cross_val_recall": 0.5693053311793215,
+                "mean_cross_val_f1": 0.6348494621969518,
+                "mean_cross_val_auc": 0.7540972039690875
+            },
+            "cross_val_confusion_matrix": {
+                "TN": 2620,
+                "FP": 684,
+                "FN": 1333,
+                "TP": 1762
+            }
+        },
+        "MLP": {
+            "include": true,
+            "default": "MLP",
+            "params": {
+                "hidden_layer_sizes": [
+                    [
+                        10
+                    ],
+                    [
+                        20
+                    ]
+                ],
+                "activation": [
+                    "tanh",
+                    "relu"
+                ],
+                "solver": [
+                    "sgd",
+                    "adam"
+                ],
+                "alpha": [
+                    0.0001,
+                    0.05
+                ],
+                "learning_rate": [
+                    "constant",
+                    "adaptive"
+                ],
+                "max_iter": [
+                    10000
+                ]
+            },
+            "best_results": {
+                "best_params": {
+                    "activation": "tanh",
+                    "alpha": 0.05,
+                    "hidden_layer_sizes": [
+                        10
+                    ],
+                    "learning_rate": "constant",
+                    "max_iter": 10000,
+                    "solver": "adam"
+                },
+                "best_score": 0.837320294175137,
+                "cross_val_scores": {
+                    "mean_cross_val_accuracy": 0.837320294175137,
+                    "mean_cross_val_precision": 0.829936920228185,
+                    "mean_cross_val_recall": 0.8345718901453958,
+                    "mean_cross_val_f1": 0.8322252222533978,
+                    "mean_cross_val_auc": 0.9093347655393951
+                },
+                "cross_val_confusion_matrix": {
+                    "TN": 2775,
+                    "FP": 529,
+                    "FN": 512,
+                    "TP": 2583
+                }
+            }
+        }
+    }
+}
